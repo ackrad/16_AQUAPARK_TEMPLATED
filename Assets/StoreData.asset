@@ -1,0 +1,75 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e38b241174d2c456586276063d07f83d, type: 3}
+  m_Name: StoreData
+  m_EditorClassIdentifier: 
+  Libraries:
+  - itemType: 1
+    libraryPages:
+    - pageType: 0
+      pageItems:
+      - itemKey: Emitter
+        Item: {fileID: 2100000, guid: 4882105f2b2704e4c8a1fe9751eb026f, type: 2}
+        price: 0
+        storeIcon: {fileID: 21300000, guid: 2c9a7fd24bc8046dfa3283b843008a2e, type: 3}
+        showCaseIcon: {fileID: 21300000, guid: 2c9a7fd24bc8046dfa3283b843008a2e, type: 3}
+        purchased: 1
+      - itemKey: Flat
+        Item: {fileID: 2100000, guid: 42149237f31c346babc81ab6967035c1, type: 2}
+        price: 100
+        storeIcon: {fileID: 21300000, guid: f6b757f215e14f64a80121de265f81ae, type: 3}
+        showCaseIcon: {fileID: 21300000, guid: f6b757f215e14f64a80121de265f81ae, type: 3}
+        purchased: 0
+      - itemKey: Aaaa
+        Item: {fileID: 2100000, guid: 834a0de5ac12946c5bea9e0a56497e3a, type: 2}
+        price: 200
+        storeIcon: {fileID: 21300000, guid: 7b11b91ead118480987609186a9be80f, type: 3}
+        showCaseIcon: {fileID: 21300000, guid: 7b11b91ead118480987609186a9be80f, type: 3}
+        purchased: 0
+      - itemKey: Bbb
+        Item: {fileID: 2100000, guid: c14104b2feb1e46ccb48f8cf5ac76ec4, type: 2}
+        price: 300
+        storeIcon: {fileID: 21300000, guid: bc5fa0acc7dba465dbcf5b5d292ed169, type: 3}
+        showCaseIcon: {fileID: 21300000, guid: bc5fa0acc7dba465dbcf5b5d292ed169, type: 3}
+        purchased: 0
+    - pageType: 0
+      pageItems:
+      - itemKey: metallic
+        Item: {fileID: 2100000, guid: 834a0de5ac12946c5bea9e0a56497e3a, type: 2}
+        price: 300
+        storeIcon: {fileID: 21300000, guid: 1d97363976bda4b18aed500247340f12, type: 3}
+        showCaseIcon: {fileID: 0}
+        purchased: 0
+      - itemKey: unlit
+        Item: {fileID: 2100000, guid: c14104b2feb1e46ccb48f8cf5ac76ec4, type: 2}
+        price: 400
+        storeIcon: {fileID: 21300000, guid: 1af4d7c5d7dee4626af9664abc2fc471, type: 3}
+        showCaseIcon: {fileID: 0}
+        purchased: 0
+    libraryIcon: {fileID: 21300000, guid: 39eb8e0b300976e438ed4122994ed6e8, type: 3}
+  - itemType: 0
+    libraryPages:
+    - pageType: 0
+      pageItems:
+      - itemKey: grass
+        Item: {fileID: 2800000, guid: 81c6794b019b24b279061b7e64c21257, type: 3}
+        price: 0
+        storeIcon: {fileID: 21300000, guid: 81c6794b019b24b279061b7e64c21257, type: 3}
+        showCaseIcon: {fileID: 21300000, guid: 81c6794b019b24b279061b7e64c21257, type: 3}
+        purchased: 1
+      - itemKey: metal
+        Item: {fileID: 2800000, guid: fa7da8ce7500e4b1ba3ab79457c302f4, type: 3}
+        price: 100
+        storeIcon: {fileID: 21300000, guid: fa7da8ce7500e4b1ba3ab79457c302f4, type: 3}
+        showCaseIcon: {fileID: 21300000, guid: fa7da8ce7500e4b1ba3ab79457c302f4, type: 3}
+        purchased: 0
+    libraryIcon: {fileID: 21300000, guid: 005888ede18a58e4db8d069cfa3007cb, type: 3}
