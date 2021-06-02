@@ -575,7 +575,7 @@ PlayerSettings:
   webGLThreadsSupport: 0
   webGLWasmStreaming: 0
   scriptingDefineSymbols:
-    1: MOREMOUNTAINS_NICEVIBRATIONS
+    1: MOREMOUNTAINS_NICEVIBRATIONS;DREAMTECK_SPLINES
   platformArchitecture: {}
   scriptingBackend: {}
   il2cppCompilerConfiguration: {}
