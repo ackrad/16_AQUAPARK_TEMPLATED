@@ -9,7 +9,7 @@ public enum CameraStatus{
 }
 
 [System.Serializable]
-public struct VirtualCameras{
+public struct VirtualCameras{ 
     public CameraStatus status;
     public CinemachineVirtualCamera camera;
 }
