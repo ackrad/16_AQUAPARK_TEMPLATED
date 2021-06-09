@@ -88,6 +88,8 @@ public class Player_Controller : MonoBehaviour
             CheckIfOutOfOffset();
             if (sp.Project(transform.position).percent > 0.99)
             {
+                Debug.Log("xd");
+
                 WinGame();
             }
 
@@ -224,7 +226,6 @@ public class Player_Controller : MonoBehaviour
 
     public void WinGame()
     {
-        
         ChangeToDiveCamera();
         float depthOfPool = 4f;
 
