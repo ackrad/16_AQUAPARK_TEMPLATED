@@ -73,7 +73,6 @@ public class Player_Controller : MonoBehaviour
         capsuleCollider = GetComponent<CapsuleCollider>();
         gameController = FindObjectOfType<GameController>();
         coinTimer = 0f;
-        cmController.setCameraStatus(CameraStatus.Camera3);
 
     }
 
@@ -268,9 +267,9 @@ public class Player_Controller : MonoBehaviour
     {
         transform.position = winPosition.position;
 
-        //cinemachineSwitcher.SwitchToWinCamera(); 
+        cmController.setCameraStatus(CameraStatus.Camera3);
 
-       // gameController.WinGame(coinWin - (int)coinTimer);
+        // gameController.WinGame(coinWin - (int)coinTimer);
 
     }
 
