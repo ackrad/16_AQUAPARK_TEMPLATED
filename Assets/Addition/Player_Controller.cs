@@ -43,6 +43,8 @@ public class Player_Controller : MonoBehaviour
     [SerializeField] int coinWin = 100;
     private float coinTimer;
 
+    CameraController cmController;
+
 
     private void OnEnable()
     {
@@ -59,14 +61,19 @@ public class Player_Controller : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
-
+        // Eklentiler
+        cmController = FindObjectOfType<CameraController>();
+        
+        
+        
+        //
         spFollower = GetComponent<SplineFollower>();
         spFollower.spline = FindObjectOfType<SplineComputer>();
         rb = GetComponent<Rigidbody>();
         capsuleCollider = GetComponent<CapsuleCollider>();
         gameController = FindObjectOfType<GameController>();
         coinTimer = 0f;
+        cmController.setCameraStatus(CameraStatus.Camera3);
 
     }
 
@@ -86,9 +93,11 @@ public class Player_Controller : MonoBehaviour
             
                 SlidingMethod();
             CheckIfOutOfOffset();
-            if (sp.Project(transform.position).percent > 0.99)
+
+            // sp follower 0.99 a gelmiyor?
+            if (sp.Project(transform.position).percent > 0.97)
             {
-                Debug.Log("xd");
+                
 
                 WinGame();
             }
@@ -250,7 +259,7 @@ public class Player_Controller : MonoBehaviour
 
     private void ChangeToDiveCamera()
     {
-       // cinemachineSwitcher.SwitchToDiveCamera(); Yeni scripte göre ayarlaman lazým
+        cmController.setCameraStatus(CameraStatus.Camera2);
 
 
     }

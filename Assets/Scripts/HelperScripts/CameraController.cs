@@ -5,7 +5,7 @@ using UnityEngine;
 using Cinemachine;
 
 public enum CameraStatus{
-    Camera1, Camera2, None
+    Camera1, Camera2, Camera3, None
 }
 
 [System.Serializable]
