@@ -39,11 +39,11 @@ public class Player_Controller : MonoBehaviour
     [SerializeField] PathMode pathMode;
 
     [Header("Game Manager")]
-    [SerializeField] GameController gameController;
     [SerializeField] int coinWin = 100;
     private float coinTimer;
 
     CameraController cmController;
+    GameController gameController;
 
 
     private void OnEnable()
@@ -63,15 +63,14 @@ public class Player_Controller : MonoBehaviour
     {
         // Eklentiler
         cmController = FindObjectOfType<CameraController>();
-        
-        
+
+        gameController = GameController.request();
         
         //
         spFollower = GetComponent<SplineFollower>();
         spFollower.spline = FindObjectOfType<SplineComputer>();
         rb = GetComponent<Rigidbody>();
         capsuleCollider = GetComponent<CapsuleCollider>();
-        gameController = FindObjectOfType<GameController>();
         coinTimer = 0f;
 
     }
@@ -218,6 +217,13 @@ public class Player_Controller : MonoBehaviour
 
             StartFollowing();
         }
+
+
+        else
+        {
+            LoseGame();
+
+        }
     }
 
     private void StartFollowing()
@@ -234,6 +240,7 @@ public class Player_Controller : MonoBehaviour
 
     public void WinGame()
     {
+        gameController.WinGame();
         ChangeToDiveCamera();
         float depthOfPool = 4f;
 
@@ -254,7 +261,12 @@ public class Player_Controller : MonoBehaviour
 
     }
 
- 
+    private void LoseGame()
+    {
+
+        gameController.LostGame();
+
+    }
 
     private void ChangeToDiveCamera()
     {
