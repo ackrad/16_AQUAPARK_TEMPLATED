@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using Dreamteck.Splines;
 
 
 
@@ -13,6 +14,9 @@ public class LevelData : ScriptableObject
     public Material LevelMaterial;
     public GameObject LevelObject;
     public float Price = 100;
+
+
+    public SplineComputer splineComputer;
 
     //------------------------------------------------------
 
