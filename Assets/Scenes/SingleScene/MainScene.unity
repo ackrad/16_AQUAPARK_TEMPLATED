@@ -206,6 +206,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6742385392971681716, guid: 36c805e5f5a114891b42160d99cc718b,
         type: 3}
+      propertyPath: IsDebugMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6742385392971681716, guid: 36c805e5f5a114891b42160d99cc718b,
+        type: 3}
       propertyPath: InputController
       value: 
       objectReference: {fileID: 0}
@@ -640,8 +645,8 @@ MonoBehaviour:
   Levels:
   - {fileID: 11400000, guid: 494eba353fa953540ba88cd8bc1f2d4a, type: 2}
   - {fileID: 11400000, guid: 7548f5bb1b2919b4f80e2ba2f9003473, type: 2}
-  TestLevel: {fileID: 11400000, guid: 494eba353fa953540ba88cd8bc1f2d4a, type: 2}
-  TestLevelIndex: -1
+  TestLevel: {fileID: 0}
+  TestLevelIndex: 0
 --- !u!1 &529303798
 GameObject:
   m_ObjectHideFlags: 0
@@ -1302,6 +1307,11 @@ PrefabInstance:
         type: 3}
       propertyPath: _clipFrom
       value: 0.14583337306976318
+      objectReference: {fileID: 0}
+    - target: {fileID: 3241075957004755796, guid: aaa5d5a4f12856349b516bb43a9304dd,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3241075957004755796, guid: aaa5d5a4f12856349b516bb43a9304dd,
         type: 3}

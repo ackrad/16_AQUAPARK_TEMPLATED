@@ -44,7 +44,6 @@ public class Player_Controller : MonoBehaviour
 
     CameraController cmController;
     GameController gameController;
-    LevelManager lvlManager;
 
     private void OnEnable()
     {
@@ -72,8 +71,10 @@ public class Player_Controller : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         capsuleCollider = GetComponent<CapsuleCollider>();
         coinTimer = 0f;
-        lvlManager = FindObjectOfType<LevelManager>();
-        lvlManager.OnLevelLoaded.AddListener(SetSplineFollower);
+        gameController.OnGameStarted.AddListener(RestartPosition);
+
+
+
 
     }
 
@@ -84,6 +85,12 @@ public class Player_Controller : MonoBehaviour
         var fingers = Lean.Touch.LeanTouch.Fingers;
 
 
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+
+            RestartPosition();
+        }
         if (isPlayerActive)
         {
             coinTimer += Time.deltaTime;
@@ -308,13 +315,37 @@ public class Player_Controller : MonoBehaviour
 
 
 
-    public void SetSplineFollower()
+    private void SetSplineFollower()
     {
         spFollower.spline = FindObjectOfType<SplineComputer>();
         sp = FindObjectOfType<SplineComputer>();
 
     }
 
-    
+    private void RestartPosition()
+    {
+        SetSplineFollower();
 
+        transform.position = (sp.GetPoints()[0].position);
+        spFollower.Restart(sp.Project(transform.position).percent); //restarts following from projected point
+
+
+
+    }
+
+    private void DisableThisComponent()
+    {
+
+        this.enabled = false;
+
+    }
+
+    private void EnableThisComponent()
+    {
+
+        this.enabled = true;
+    }
+
+
+   
 }

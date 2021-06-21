@@ -151,8 +151,9 @@ public class LevelManager : Singleton<LevelManager>
 
             //First try to load test levels if debug mode is active
             if(_gameController.IsDebugMode && (TestLevelIndex!=-1 || TestLevel!=null)){
-            
-                if(TestLevel!=null){
+
+
+                if (TestLevel!=null){
                     LoadLevelWithData(TestLevel);
                 }else{
                     TestLevelIndex=Mathf.Clamp(TestLevelIndex,0,Levels.Length);
@@ -182,7 +183,6 @@ public class LevelManager : Singleton<LevelManager>
                     }
                 }
             }
-        
             OnLevelLoaded.Invoke();
         }
 
