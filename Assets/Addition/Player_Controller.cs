@@ -264,7 +264,7 @@ public class Player_Controller : MonoBehaviour
         path[1] = poolPosition.position;
         path[2] = poolPosition.position + new Vector3(0, depthOfPool, 0);
 
-        transform.DOPath(path, animMoveDuration, pathType, pathMode,10,Color.red).OnComplete(() => { ChangeToWinCamera(); });
+        transform.DOPath(path, animMoveDuration, pathType, pathMode,10,Color.red).OnComplete(() => { ChangeToWinCamera(); gameController.EarnMoney(LevelManager.request().ActiveLevelData.Price); });
 
 
 

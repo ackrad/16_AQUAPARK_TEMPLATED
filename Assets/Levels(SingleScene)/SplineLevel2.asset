@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38fabac1ad2304782afae9e81855a805, type: 3}
   m_Name: SplineLevel2
   m_EditorClassIdentifier: 
-  LevelName: Level_1
-  LevelMaterial: {fileID: 2100000, guid: 29186e1e6edef3a4e9f89c106a7f6de4, type: 2}
+  LevelName: Level_2
+  LevelMaterial: {fileID: 2100000, guid: cb06399f8d640a347a7adc63a58f324a, type: 2}
   LevelObject: {fileID: -927199367670048503, guid: 97715e6929b154da2865c0994456f0fc,
     type: 3}
   Price: 100

@@ -25,4 +25,6 @@ public class MoneyText : TextController
         if(gameController) 
             gameController.onMoneyChanged.RemoveListener(moneyIsChanged);
     }
+
+
 }
