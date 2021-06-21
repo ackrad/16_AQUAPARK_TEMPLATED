@@ -16,7 +16,7 @@ public class LevelData : ScriptableObject
     public float Price = 100;
 
 
-    public SplineComputer splineComputer;
+    public GameObject splineComputer;
 
     //------------------------------------------------------
 

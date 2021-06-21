@@ -216,7 +216,7 @@ public class LevelManager : Singleton<LevelManager>
         
         //------- Example level loading. This part will be changed according to design of mechanic --------
         
-        GameObject exampleLevelObject= Instantiate(levelData.LevelObject,transform);
+        GameObject exampleLevelObject= Instantiate(levelData.splineComputer,transform);
         exampleLevelObject.GetComponent<MeshRenderer>().material=levelData.LevelMaterial;
         
         //------------------------------------------------------

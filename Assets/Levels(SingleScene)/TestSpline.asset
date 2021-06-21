@@ -17,5 +17,5 @@ MonoBehaviour:
   LevelObject: {fileID: -927199367670048503, guid: 97715e6929b154da2865c0994456f0fc,
     type: 3}
   Price: 100
-  splineComputer: {fileID: 5339332028049283999, guid: ed874a18f34ebac4d81f1413ebb200b8,
+  splineComputer: {fileID: 2620091336018500475, guid: a59891f8c9990584b93163441747aab9,
     type: 3}
