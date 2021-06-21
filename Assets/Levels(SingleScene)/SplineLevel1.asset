@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 38fabac1ad2304782afae9e81855a805, type: 3}
-  m_Name: TestSpline
+  m_Name: SplineLevel1
   m_EditorClassIdentifier: 
   LevelName: Level_1
   LevelMaterial: {fileID: 2100000, guid: 29186e1e6edef3a4e9f89c106a7f6de4, type: 2}

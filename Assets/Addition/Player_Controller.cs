@@ -44,7 +44,7 @@ public class Player_Controller : MonoBehaviour
 
     CameraController cmController;
     GameController gameController;
-
+    LevelManager lvlManager;
 
     private void OnEnable()
     {
@@ -72,6 +72,8 @@ public class Player_Controller : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         capsuleCollider = GetComponent<CapsuleCollider>();
         coinTimer = 0f;
+        lvlManager = FindObjectOfType<LevelManager>();
+        lvlManager.OnLevelLoaded.AddListener(SetSplineFollower);
 
     }
 
@@ -304,9 +306,14 @@ public class Player_Controller : MonoBehaviour
     }
 
 
-   
 
 
+    public void SetSplineFollower()
+    {
+        spFollower.spline = FindObjectOfType<SplineComputer>();
+        sp = FindObjectOfType<SplineComputer>();
+
+    }
 
     
 
