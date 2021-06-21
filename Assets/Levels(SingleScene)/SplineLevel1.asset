@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: TestSpline
   m_EditorClassIdentifier: 
   LevelName: Level_1
-  LevelMaterial: {fileID: 2100000, guid: 834a0de5ac12946c5bea9e0a56497e3a, type: 2}
+  LevelMaterial: {fileID: 2100000, guid: 29186e1e6edef3a4e9f89c106a7f6de4, type: 2}
   LevelObject: {fileID: -927199367670048503, guid: 97715e6929b154da2865c0994456f0fc,
     type: 3}
   Price: 100
