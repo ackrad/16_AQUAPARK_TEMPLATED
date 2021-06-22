@@ -164,7 +164,6 @@ public class LevelManager : Singleton<LevelManager>
 
                 //If level index is in range of level array capacity
                 if(levelIndex<Levels.Length){
-                
                     LoadLevelWithData(Levels[levelIndex]);
                 
                 }else{
