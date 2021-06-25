@@ -85,7 +85,6 @@ public class Player_Controller : MonoBehaviour
         var fingers = Lean.Touch.LeanTouch.Fingers;
 
 
-
         if (Input.GetKeyDown(KeyCode.Space))
         {
 
@@ -104,7 +103,8 @@ public class Player_Controller : MonoBehaviour
             // sp follower 0.99 a gelmiyor?
             if (sp.Project(transform.position).percent > 0.97)
             {
-                
+                Debug.Log("xd");
+
 
                 WinGame();
             }
@@ -294,6 +294,14 @@ public class Player_Controller : MonoBehaviour
 
     }
 
+    private void ChangeToSlideCamera()
+    {
+
+        cmController.setCameraStatus(CameraStatus.Camera1);
+
+
+    }
+
 
     private void SwipeHappened(Lean.Touch.LeanFinger finger)
     {
@@ -326,9 +334,12 @@ public class Player_Controller : MonoBehaviour
     {
         SetSplineFollower();
 
-        transform.position = (sp.GetPoints()[0].position);
-        spFollower.Restart(sp.Project(transform.position).percent); //restarts following from projected point
+        transform.position =sp.GetPoints()[0].position;
 
+        spFollower.Restart(sp.Project(transform.position).percent); //restarts following from projected point
+        spFollower.follow = true;
+        isPlayerActive = true;
+        ChangeToSlideCamera();
 
 
     }
