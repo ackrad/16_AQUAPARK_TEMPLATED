@@ -27,8 +27,8 @@ public class Player_Controller : MonoBehaviour
     CapsuleCollider capsuleCollider;
     
     //booleans
-    bool isFollowing = true;
-    public bool isPlayerActive = true;
+    bool isFollowing = false;
+    public bool isPlayerActive = false;
     [Range(-1,1)] private float fingerMovement = 0;
 
     [Header("Ending Animation Metrics")]
@@ -339,6 +339,7 @@ public class Player_Controller : MonoBehaviour
         spFollower.Restart(sp.Project(transform.position).percent); //restarts following from projected point
         spFollower.follow = true;
         isPlayerActive = true;
+        isFollowing = true;
         ChangeToSlideCamera();
 
 
