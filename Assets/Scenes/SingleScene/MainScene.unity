@@ -1283,6 +1283,56 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3241075957004755796, guid: aaa5d5a4f12856349b516bb43a9304dd,
+        type: 3}
+      propertyPath: _clipTo
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3241075957004755796, guid: aaa5d5a4f12856349b516bb43a9304dd,
+        type: 3}
+      propertyPath: _clipFrom
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3241075957004755796, guid: aaa5d5a4f12856349b516bb43a9304dd,
+        type: 3}
+      propertyPath: _result.forward.x
+      value: -0.24683776
+      objectReference: {fileID: 0}
+    - target: {fileID: 3241075957004755796, guid: aaa5d5a4f12856349b516bb43a9304dd,
+        type: 3}
+      propertyPath: _result.forward.y
+      value: -0.58039117
+      objectReference: {fileID: 0}
+    - target: {fileID: 3241075957004755796, guid: aaa5d5a4f12856349b516bb43a9304dd,
+        type: 3}
+      propertyPath: _result.forward.z
+      value: -0.7760266
+      objectReference: {fileID: 0}
+    - target: {fileID: 3241075957004755796, guid: aaa5d5a4f12856349b516bb43a9304dd,
+        type: 3}
+      propertyPath: _result.position.x
+      value: 331.44656
+      objectReference: {fileID: 0}
+    - target: {fileID: 3241075957004755796, guid: aaa5d5a4f12856349b516bb43a9304dd,
+        type: 3}
+      propertyPath: _result.position.y
+      value: 64.61884
+      objectReference: {fileID: 0}
+    - target: {fileID: 3241075957004755796, guid: aaa5d5a4f12856349b516bb43a9304dd,
+        type: 3}
+      propertyPath: _result.position.z
+      value: -1305.1187
+      objectReference: {fileID: 0}
+    - target: {fileID: 3241075957004755796, guid: aaa5d5a4f12856349b516bb43a9304dd,
+        type: 3}
+      propertyPath: sampleCollection.clipTo
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3241075957004755796, guid: aaa5d5a4f12856349b516bb43a9304dd,
+        type: 3}
+      propertyPath: sampleCollection.clipFrom
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3241075957004755823, guid: aaa5d5a4f12856349b516bb43a9304dd,
         type: 3}
       propertyPath: m_Name
