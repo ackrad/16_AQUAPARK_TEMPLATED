@@ -85,11 +85,7 @@ public class Player_Controller : MonoBehaviour
         var fingers = Lean.Touch.LeanTouch.Fingers;
 
 
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-
-            RestartPosition();
-        }
+     
         if (isPlayerActive)
         {
             coinTimer += Time.deltaTime;

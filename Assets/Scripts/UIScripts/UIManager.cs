@@ -18,7 +18,13 @@ public class UIManager : Singleton<UIManager>
     public Button RestartLevelButton;
 
     [HideInInspector] public Canvas mainCanvas;
-    
+
+
+    // EGE KISMI
+    [SerializeField] GameObject LoadSliderUI;
+    [SerializeField] Slider slider;
+    [SerializeField] float loadTime =2f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -40,8 +46,12 @@ public class UIManager : Singleton<UIManager>
         
         LevelWinPanel.gameObject.SetActive(false);
         LevelLostPanel.gameObject.SetActive(false);
-        
-        
+
+        //EGE KISMI YİNE
+        NextLevelButton.onClick.AddListener(LoadAnimation);
+
+
+        //Ege Kısmı Bitti
         //Event listerers may not catch start trigger of gamecontroller due to race condition there for check is game started boolean
         if(gameController.IsGameStarted) 
             GameIsStarted();
@@ -84,7 +94,34 @@ public class UIManager : Singleton<UIManager>
     }
     
 
+    // EGEEEEEE
+
+    private void LoadAnimation()
+    {
+        LoadSliderUI.SetActive(true);
+
+        StartCoroutine(LoadingScene());
 
 
-   
+    }
+
+    private IEnumerator LoadingScene()
+    {
+        float time = 0f;
+
+        while (time <= loadTime)
+        {
+            time += Random.Range(0, 0.12f);
+            slider.value = time;
+
+            yield return new WaitForSeconds(0.1f);
+
+
+
+        }
+
+        LoadSliderUI.SetActive(false);
+
+
+    }
 }
