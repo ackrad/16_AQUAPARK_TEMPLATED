@@ -23,7 +23,8 @@ public class UIManager : Singleton<UIManager>
     // EGE KISMI
     [SerializeField] GameObject LoadSliderUI;
     [SerializeField] Slider slider;
-    [SerializeField] float loadTime =2f;
+    [SerializeField] float loadTime =1f;
+    [SerializeField] Text text;
 
     // Start is called before the first frame update
     void Start()
@@ -101,7 +102,7 @@ public class UIManager : Singleton<UIManager>
         LoadSliderUI.SetActive(true);
 
         StartCoroutine(LoadingScene());
-
+        StartCoroutine(ChangeLoadText());
 
     }
 
@@ -112,7 +113,7 @@ public class UIManager : Singleton<UIManager>
         while (time <= loadTime)
         {
             time += Random.Range(0, 0.12f);
-            slider.value = time;
+            slider.value = time/loadTime;
 
             yield return new WaitForSeconds(0.1f);
 
@@ -121,6 +122,33 @@ public class UIManager : Singleton<UIManager>
         }
 
         LoadSliderUI.SetActive(false);
+
+
+    }
+
+
+    private IEnumerator ChangeLoadText()
+    {
+        float timeBetweenDots = 0.1f;
+        int i = 0;
+        while (true)
+        {
+            if (i <= 2)
+            {
+                text.text = text.text + ".";
+                i++;
+            }
+
+            else
+            {
+                text.text = "LOADING";
+                i = 0;
+
+            }
+            yield return new WaitForSeconds(timeBetweenDots);
+
+
+        }
 
 
     }
