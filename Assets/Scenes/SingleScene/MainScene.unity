@@ -968,7 +968,7 @@ PrefabInstance:
     - target: {fileID: 5524752648916653769, guid: 1264b051f79fb804d8be236cf0482db3,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 45.4
+      value: 228.1
       objectReference: {fileID: 0}
     - target: {fileID: 5524752648916653769, guid: 1264b051f79fb804d8be236cf0482db3,
         type: 3}
@@ -978,7 +978,7 @@ PrefabInstance:
     - target: {fileID: 5524752648916653769, guid: 1264b051f79fb804d8be236cf0482db3,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1567.6
+      value: -1398.5
       objectReference: {fileID: 0}
     - target: {fileID: 5524752648916653769, guid: 1264b051f79fb804d8be236cf0482db3,
         type: 3}
@@ -1669,10 +1669,9 @@ GameObject:
   - component: {fileID: 1575185613}
   - component: {fileID: 1575185617}
   - component: {fileID: 1575185616}
-  - component: {fileID: 1575185615}
   - component: {fileID: 1575185614}
   m_Layer: 5
-  m_Name: LevelFieldText
+  m_Name: slideFieldText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1694,8 +1693,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0.4}
-  m_SizeDelta: {x: 79.5, y: 17.6}
+  m_AnchoredPosition: {x: -5.7, y: 0.86}
+  m_SizeDelta: {x: 100.507416, y: 16.689657}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1575185614
 MonoBehaviour:
@@ -1712,20 +1711,6 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.23529412}
   m_EffectDistance: {x: 0, y: -1.5}
   m_UseGraphicAlpha: 1
---- !u!114 &1575185615
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1575185612}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69de5189f30bb4c45bb66e3d68af2aae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefix: 'Level '
-  suffix: 
 --- !u!114 &1575185616
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1749,7 +1734,7 @@ MonoBehaviour:
     m_Font: {fileID: 12800000, guid: 0ecefa60ef4c7444fb12e8a1b300a6ac, type: 3}
     m_FontSize: 14
     m_FontStyle: 0
-    m_BestFit: 1
+    m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 40
     m_Alignment: 4
