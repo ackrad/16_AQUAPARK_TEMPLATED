@@ -288,6 +288,7 @@ public class Player_Controller : MonoBehaviour
     private void ChangeToWinCamera()
     {
         transform.position = winPosition.position;
+        transform.rotation = winPosition.rotation;
 
         cmController.setCameraStatus(CameraStatus.Camera3);
 
