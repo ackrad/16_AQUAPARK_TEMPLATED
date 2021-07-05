@@ -67,14 +67,15 @@ public class Player_Controller : MonoBehaviour
 
         gameController = GameController.request();
         
-        //
+        
         spFollower = GetComponent<SplineFollower>();
         spFollower.spline = FindObjectOfType<SplineComputer>();
         rb = GetComponent<Rigidbody>();
         capsuleCollider = GetComponent<CapsuleCollider>();
         coinTimer = 0f;
-        gameController.OnGameStarted.AddListener(RestartPosition);
+       // gameController.OnGameStarted.AddListener(RestartPosition);
         animations.Slide();
+        UIController.request().StartSliding.AddListener(RestartPosition);
 
 
 
@@ -83,11 +84,10 @@ public class Player_Controller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        
         var fingers = Lean.Touch.LeanTouch.Fingers;
 
 
-     
         if (isPlayerActive)
         {
             coinTimer += Time.deltaTime;
@@ -101,7 +101,6 @@ public class Player_Controller : MonoBehaviour
             // sp follower 0.99 a gelmiyor?
             if (sp.Project(transform.position).percent > 0.97)
             {
-                Debug.Log("xd");
 
 
                 WinGame();
@@ -338,16 +337,18 @@ public class Player_Controller : MonoBehaviour
 
         SetSplineFollower();
 
-        transform.position =sp.GetPoints()[0].position;
-
-        spFollower.Restart(sp.Project(transform.position).percent); //restarts following from projected point
+        transform.position = sp.GetPoints()[0].position;
+     
         spFollower.follow = true;
         isPlayerActive = true;
         isFollowing = true;
+        spFollower.Restart(0); //restarts following from projected point
         ChangeToSlideCamera();
 
         animations.Slide();
     }
+
+   
 
     private void DisableThisComponent()
     {

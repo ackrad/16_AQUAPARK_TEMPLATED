@@ -6,8 +6,6 @@ using UnityEngine.Events;
 
 public class UIController : Singleton<UIController>
 {
-    [SerializeField] GameObject countdownCanvas;
-
 
     public UnityEvent StartSliding = new UnityEvent();
 
@@ -35,13 +33,10 @@ public class UIController : Singleton<UIController>
 
     private IEnumerator CountDown()
     {
-        countdownCanvas.SetActive(true);
-        FindObjectOfType<Countdown>().StartCountdown();
 
         yield return new WaitForSeconds(3f); // TODO bunu serialized yapmak isteyebilirsin
 
 
-        countdownCanvas.SetActive(false);
 
         StartSliding.Invoke();
 
