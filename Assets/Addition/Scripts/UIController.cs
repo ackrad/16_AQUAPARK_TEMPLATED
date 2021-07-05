@@ -34,7 +34,7 @@ public class UIController : Singleton<UIController>
     private IEnumerator CountDown()
     {
 
-        yield return new WaitForSeconds(3f); // TODO bunu serialized yapmak isteyebilirsin
+        yield return new WaitForSeconds(1f); // TODO bunu serialized yapmak isteyebilirsin
 
 
 
