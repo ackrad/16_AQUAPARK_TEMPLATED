@@ -5,32 +5,36 @@ using UnityEngine;
 public class AnimatorControllerScript : MonoBehaviour
 {
     [SerializeField] Animator animator;
-    const string fall = "fall";
+    const string fall = "IsFalling";
     const string victory = "Victory";
-    const string slide = "slide";
+    const string slide = "isSliding";
 
 
 
     public void Fall()
     {
 
-
-        animator.SetBool("isSliding", false);
-        animator.ResetTrigger(victory);
+        animator.SetBool(fall, true);
+        animator.SetBool(slide, false);
+        animator.SetBool(victory, false);
 
     }
 
     public void Slide()
     {
 
-        animator.SetBool("isSliding", true);
-        animator.ResetTrigger(victory);
-
+        animator.SetBool(slide, true);
+        animator.SetBool(victory, false);
+        animator.SetBool(fall, false);
     }
 
     public void Victory()
     {
 
-        animator.SetTrigger(victory);
+        animator.SetBool(victory, true);
+        animator.SetBool(fall, false);
+
+        animator.SetBool(slide, false);
+
     }
 }
