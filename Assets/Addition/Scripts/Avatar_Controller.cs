@@ -122,11 +122,7 @@ public class Avatar_Controller : MonoBehaviour
         rb.velocity = new Vector3(0,rb.velocity.y,0) + transform.forward * moveSpeed; // y velocityi koruyup ileri doðru hýz vermek için
        
         
-        var fingers = Lean.Touch.LeanTouch.Fingers;
-
-        if (fingers.Count < 1) { return; }
-
-        var finger = fingers[0];
+       
 
         if (player_Movement == MovementEnum.right)
         {
@@ -186,11 +182,7 @@ public class Avatar_Controller : MonoBehaviour
     private void SlidingMethod()
     {
 
-        var fingers = Lean.Touch.LeanTouch.Fingers;
-
-        if (fingers.Count < 1) { return; }
-
-        var finger = fingers[0];
+      
         float offsetX = spFollower.motion.offset.x;
         float newOffsetX;
 
@@ -232,7 +224,7 @@ public class Avatar_Controller : MonoBehaviour
         }
 
 
-        else
+        else if(collision.collider.CompareTag("Respawn"))
         {
             LoseGame();
 

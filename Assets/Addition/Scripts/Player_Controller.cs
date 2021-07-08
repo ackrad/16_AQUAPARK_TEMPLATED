@@ -14,7 +14,6 @@ public class Player_Controller : MonoBehaviour
     private void OnEnable()
     {
         Lean.Touch.LeanTouch.OnFingerDown += GetContactPoint;
-        Lean.Touch.LeanTouch.OnFingerUp += FingerIsUp;
 
 
     }
@@ -22,7 +21,6 @@ public class Player_Controller : MonoBehaviour
     private void OnDisable()
     {
         Lean.Touch.LeanTouch.OnFingerDown -= GetContactPoint;
-        Lean.Touch.LeanTouch.OnFingerUp -= FingerIsUp;
 
     }
 
@@ -36,7 +34,12 @@ public class Player_Controller : MonoBehaviour
     {
         var fingers = Lean.Touch.LeanTouch.Fingers;
 
-        if (fingers.Count < 1) { return; }
+
+        if (fingers.Count < 1)
+        {
+            avatar_Controller.player_Movement = Avatar_Controller.MovementEnum.middle;
+            return;
+        }
 
         Lean.Touch.LeanFinger finger = fingers[0];
 
@@ -67,11 +70,5 @@ public class Player_Controller : MonoBehaviour
     }
 
 
-    private void FingerIsUp(Lean.Touch.LeanFinger finger)
-    {
-
-        avatar_Controller.player_Movement = Avatar_Controller.MovementEnum.middle;
-
-
-    }
+ 
 }

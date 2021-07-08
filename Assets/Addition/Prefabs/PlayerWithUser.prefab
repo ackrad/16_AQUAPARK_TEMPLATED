@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &1997076524
+--- !u!114 &6939516069115535695
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -33,7 +33,12 @@ PrefabInstance:
     - target: {fileID: 8979518431277214989, guid: 5a1293a3d0330c548877a696567106f0,
         type: 3}
       propertyPath: m_Name
-      value: PlayerV3
+      value: PlayerWithUser
+      objectReference: {fileID: 0}
+    - target: {fileID: 8979518431277214989, guid: 5a1293a3d0330c548877a696567106f0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8979518431277215025, guid: 5a1293a3d0330c548877a696567106f0,
         type: 3}
@@ -90,7 +95,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1590544156, guid: 5a1293a3d0330c548877a696567106f0, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 5a1293a3d0330c548877a696567106f0, type: 3}
 --- !u!1 &464223250866320018 stripped
 GameObject:
