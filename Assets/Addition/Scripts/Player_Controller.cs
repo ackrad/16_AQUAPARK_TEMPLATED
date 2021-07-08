@@ -15,6 +15,7 @@ public class Player_Controller : MonoBehaviour
     [SerializeField] float rotationSpeed = 60f;
     [SerializeField] float upForce = 10f;
     [SerializeField] float secondsToWait = 0.5f;
+    [SerializeField] float inputLeeway = 20f;
 
     [SerializeField] SplineComputer sp;
     [Header("TODO Bunu dynamic yap")]
@@ -47,14 +48,19 @@ public class Player_Controller : MonoBehaviour
     CameraController cmController;
     GameController gameController;
 
+
+    // Input Controls
+    Vector2 fingerPos = new Vector2(0f,0f);
+
     private void OnEnable()
     {
-        Lean.Touch.LeanTouch.OnFingerSwipe += SwipeHappened;
+        Lean.Touch.LeanTouch.OnFingerDown += GetContactPoint;
+
     }
 
     private void OnDisable()
     {
-        Lean.Touch.LeanTouch.OnFingerSwipe -= SwipeHappened;
+        Lean.Touch.LeanTouch.OnFingerDown -= GetContactPoint;
 
     }
 
@@ -83,15 +89,17 @@ public class Player_Controller : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        
-        var fingers = Lean.Touch.LeanTouch.Fingers;
+    {        
+
 
 
         if (isPlayerActive)
         {
             coinTimer += Time.deltaTime;
         }
+
+         // If finger is not touching the screen no need to run the rest of update.
+
         if (isFollowing  && isPlayerActive)
         {
             
@@ -122,12 +130,18 @@ public class Player_Controller : MonoBehaviour
 
     private void FlyingMethod()
     {
-
+    
 
         rb.velocity = new Vector3(0,rb.velocity.y,0) + transform.forward * moveSpeed; // y velocityi koruyup ileri doðru hýz vermek için
+       
+        
+        var fingers = Lean.Touch.LeanTouch.Fingers;
 
+        if (fingers.Count < 1) { return; }
 
-        if (fingerMovement > 0)
+        var finger = fingers[0];
+
+        if (finger.ScreenPosition.x > fingerPos.x + inputLeeway )
         {
             Vector3 test = new Vector3(0, rotationSpeed, 0);
             Quaternion deltaRotation = Quaternion.Euler(test * Time.deltaTime);
@@ -135,7 +149,7 @@ public class Player_Controller : MonoBehaviour
 
         }
 
-        else if (fingerMovement < 0)
+        else if (finger.ScreenPosition.x < fingerPos.x - inputLeeway)
         {
             Vector3 test = new Vector3(0, -rotationSpeed, 0);
             Quaternion deltaRotation = Quaternion.Euler(test * Time.deltaTime);
@@ -158,6 +172,8 @@ public class Player_Controller : MonoBehaviour
         }
     }
 
+
+   
     private IEnumerator StopFollowingSpline()
     {
         fingerMovement = 0;
@@ -183,13 +199,16 @@ public class Player_Controller : MonoBehaviour
 
     private void SlidingMethod()
     {
-       
 
+        var fingers = Lean.Touch.LeanTouch.Fingers;
 
+        if (fingers.Count < 1) { return; }
+
+        var finger = fingers[0];
         float offsetX = spFollower.motion.offset.x;
         float newOffsetX;
 
-        if ( fingerMovement>0)  
+        if ( finger.ScreenPosition.x > fingerPos.x +inputLeeway )  
         {
             newOffsetX = offsetX + sideMoveSpeed*Time.deltaTime;
             float newOffsetY = maxOfset * Mathf.Cos(newOffsetX / maxOfset);
@@ -198,7 +217,7 @@ public class Player_Controller : MonoBehaviour
 
         }
 
-        else if (fingerMovement<0) 
+        else if (finger.ScreenPosition.x < fingerPos.x - inputLeeway)
         {
 
             newOffsetX = offsetX - sideMoveSpeed* Time.deltaTime;
@@ -304,25 +323,15 @@ public class Player_Controller : MonoBehaviour
     }
 
 
-    private void SwipeHappened(Lean.Touch.LeanFinger finger)
+    private void GetContactPoint(Lean.Touch.LeanFinger finger)
     {
+        fingerPos = finger.LastScreenPosition;
 
-        
-        if(finger.SwipeScaledDelta.x > 0) //Swipe Right
-        {
-            fingerMovement += 1;
-
-        }
-
-        else if(finger.SwipeScaledDelta.x < 0 ) //Swipe Left
-        {
-            fingerMovement -= 1;
-        }
-
+       
     }
 
 
-
+    
 
     private void SetSplineFollower()
     {
