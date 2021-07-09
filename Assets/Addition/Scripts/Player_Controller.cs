@@ -27,6 +27,9 @@ public class Player_Controller : MonoBehaviour
     void Start()
     {
         avatar_Controller = GetComponent<Avatar_Controller>();
+
+        avatar_Controller.onWin.AddListener(WinGame);
+        avatar_Controller.onLose.AddListener(LoseGame);
     }
 
     // Update is called once per frame
@@ -69,6 +72,18 @@ public class Player_Controller : MonoBehaviour
 
     }
 
+    private void WinGame()
+    {
 
+        avatar_Controller.WinGameUser();
+
+    }
+
+    private void LoseGame()
+    {
+
+        avatar_Controller.LoseGameUser();
+
+    }
  
 }

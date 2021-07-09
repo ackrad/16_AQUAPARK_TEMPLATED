@@ -22,7 +22,8 @@ public class AI_Controller : MonoBehaviour
             StartCoroutine(RandomDecisionMaking());
         }
 
-
+        avatar_Controller.onWin.AddListener(WinGame);
+        avatar_Controller.onLose.AddListener(LoseGame);
     }
 
     // Update is called once per frame
@@ -45,4 +46,19 @@ public class AI_Controller : MonoBehaviour
         }
 
     }
+
+    private void WinGame()
+    {
+
+        avatar_Controller.WinGameAI();
+
+    }
+
+    private void LoseGame()
+    {
+
+        avatar_Controller.LoseGameAI();
+
+    }
+
 }

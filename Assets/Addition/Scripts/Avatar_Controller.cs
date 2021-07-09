@@ -1,10 +1,10 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Dreamteck.Splines;
 using DG.Tweening;
 using System;
-
+using UnityEngine.Events;
 
 public class Avatar_Controller : MonoBehaviour
 {
@@ -45,7 +45,11 @@ public class Avatar_Controller : MonoBehaviour
     GameController gameController;
 
 
-    // Input Controls
+    // Win And Lose Events
+    [HideInInspector] public UnityEvent onLose = new UnityEvent();
+    [HideInInspector] public UnityEvent onWin = new UnityEvent();
+
+
 
     public enum MovementEnum { right, left, middle };
 
@@ -55,7 +59,6 @@ public class Avatar_Controller : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // Eklentiler
         cmController = FindObjectOfType<CameraController>();
 
         gameController = GameController.request();
@@ -66,7 +69,6 @@ public class Avatar_Controller : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         capsuleCollider = GetComponent<CapsuleCollider>();
         coinTimer = 0f;
-       // gameController.OnGameStarted.AddListener(RestartPosition);
         animations.Slide();
         UIController.request().StartSliding.AddListener(RestartPosition);
 
@@ -93,12 +95,11 @@ public class Avatar_Controller : MonoBehaviour
                 SlidingMethod();
             CheckIfOutOfOffset();
 
-            // sp follower 0.99 a gelmiyor?
             if (sp.Project(transform.position).percent > 0.97)
             {
 
 
-                WinGame(); 
+                InvokeWinGameEvent();
             }
 
         }
@@ -115,11 +116,16 @@ public class Avatar_Controller : MonoBehaviour
 
     }
 
+    public void InvokeWinGameEvent()
+    {
+        onWin.Invoke();
+    }
+
     private void FlyingMethod()
     {
     
 
-        rb.velocity = new Vector3(0,rb.velocity.y,0) + transform.forward * moveSpeed; // y velocityi koruyup ileri doðru hýz vermek için
+        rb.velocity = new Vector3(0,rb.velocity.y,0) + transform.forward * moveSpeed; //keep y velocity
        
         
        
@@ -226,9 +232,14 @@ public class Avatar_Controller : MonoBehaviour
 
         else if(collision.collider.CompareTag("Respawn"))
         {
-            LoseGame();
+            LoseGameEvent();
 
         }
+    }
+
+    private void LoseGameEvent()
+    {
+        onLose.Invoke();
     }
 
     private void StartFollowing()
@@ -243,7 +254,7 @@ public class Avatar_Controller : MonoBehaviour
 
 
 
-    public void WinGame()
+    public void WinGameUser()
     {
         ChangeToDiveCamera();
         float depthOfPool = 4f;
@@ -265,11 +276,37 @@ public class Avatar_Controller : MonoBehaviour
 
 
     }
+    public void WinGameAI()
+    {
+        float depthOfPool = 4f;
 
-    private void LoseGame()
+
+        spFollower.follow = false;
+        Vector3[] path = new Vector3[3];
+
+
+
+        path[0] = transform.position - (transform.position - poolPosition.position) / 2 + new Vector3(0, upMoveAmount, 0);
+        path[1] = poolPosition.position;
+        path[2] = poolPosition.position + new Vector3(0, depthOfPool, 0);
+
+        transform.DOPath(path, animMoveDuration, pathType, pathMode, 10, Color.red).OnComplete(() => {  animations.Victory(); });
+
+
+
+
+    }
+    public void LoseGameUser()
     {
 
         gameController.LostGame();
+
+    }
+
+    public void LoseGameAI()
+    {
+
+        this.gameObject.SetActive(false);
 
     }
 
@@ -287,7 +324,6 @@ public class Avatar_Controller : MonoBehaviour
 
         cmController.setCameraStatus(CameraStatus.Camera3);
 
-        // gameController.WinGame(coinWin - (int)coinTimer);
 
     }
 
