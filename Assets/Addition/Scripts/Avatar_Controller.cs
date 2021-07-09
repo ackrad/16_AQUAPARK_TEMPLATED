@@ -18,7 +18,7 @@ public class Avatar_Controller : MonoBehaviour
     [Header("TODO Bunu dynamic yap")]
     [SerializeField] float maxOfset = 3f;
     [SerializeField] string splineTag = "Spline";
-    [SerializeField] Transform winPosition;
+    Transform winPosition;
     [SerializeField] AnimatorControllerScript animations;
 
     // cached
@@ -32,7 +32,7 @@ public class Avatar_Controller : MonoBehaviour
 
     [Header("Ending Animation Metrics")]
     [SerializeField] float animMoveDuration=2f ;
-    [SerializeField] Transform poolPosition;
+    Transform poolPosition;
     [SerializeField] float upMoveAmount = 7f;
     [SerializeField] PathType pathType;
     [SerializeField] PathMode pathMode;
@@ -72,6 +72,10 @@ public class Avatar_Controller : MonoBehaviour
         animations.Slide();
         UIController.request().StartSliding.AddListener(RestartPosition);
 
+
+
+        poolPosition = LevelManager.request().GetComponent<Required_Datas>().pool_Position;
+        winPosition = LevelManager.request().GetComponent<Required_Datas>().win_Position;
 
 
     }
