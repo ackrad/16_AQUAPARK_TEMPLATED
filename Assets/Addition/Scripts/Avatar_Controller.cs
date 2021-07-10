@@ -13,6 +13,7 @@ public class Avatar_Controller : MonoBehaviour
     [SerializeField] float rotationSpeed = 60f;
     [SerializeField] float upForce = 10f;
     [SerializeField] float secondsToWait = 0.5f;
+    [SerializeField] float maxMoveSpeed = 30f;
 
     [SerializeField] SplineComputer sp;
     [Header("TODO Bunu dynamic yap")]
@@ -91,7 +92,6 @@ public class Avatar_Controller : MonoBehaviour
             coinTimer += Time.deltaTime;
         }
 
-         // If finger is not touching the screen no need to run the rest of update.
 
         if (isFollowing  && isPlayerActive)
         {
@@ -192,6 +192,8 @@ public class Avatar_Controller : MonoBehaviour
     private void SlidingMethod()
     {
 
+        //increase follow Speed
+        IncreaseSlideSpeed();
       
         float offsetX = spFollower.motion.offset.x;
         float newOffsetX;
@@ -221,9 +223,16 @@ public class Avatar_Controller : MonoBehaviour
 
     }
 
+    private void IncreaseSlideSpeed()
+    {
+        if (spFollower.followSpeed < maxMoveSpeed)
+        {
+            spFollower.followSpeed += 1f * Time.deltaTime;
+            moveSpeed = spFollower.followSpeed;
 
+        }
 
-
+    }
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -358,7 +367,8 @@ public class Avatar_Controller : MonoBehaviour
         SetSplineFollower();
 
         transform.position = sp.GetPoints()[0].position;
-     
+
+        RestartFollowSpeed();
         spFollower.follow = true;
         isPlayerActive = true;
         isFollowing = true;
@@ -368,7 +378,11 @@ public class Avatar_Controller : MonoBehaviour
         animations.Slide();
     }
 
-   
+    private void RestartFollowSpeed()
+    {
+        spFollower.followSpeed = 5f;
+        
+    }
 
     private void DisableThisComponent()
     {
