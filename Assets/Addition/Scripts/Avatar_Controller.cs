@@ -406,7 +406,7 @@ public class Avatar_Controller : MonoBehaviour
 
         distance = (transform.position - poolPosition.position).magnitude;
 
-        return distance
+        return distance;
 
 
     }
