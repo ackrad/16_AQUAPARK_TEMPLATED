@@ -399,6 +399,18 @@ public class Avatar_Controller : MonoBehaviour
 
 
    
+    public float DistanceToPool()
+    {
+
+        float distance;
+
+        distance = (transform.position - poolPosition.position).magnitude;
+
+        return distance
+
+
+    }
+
 
 
 }
