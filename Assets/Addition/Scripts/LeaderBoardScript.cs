@@ -1,6 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
+using UnityEngine.UI;
+
 
 public class LeaderBoardScript : MonoBehaviour
 {
@@ -8,12 +11,16 @@ public class LeaderBoardScript : MonoBehaviour
 
 
         //  TODO TURN THIS INTO LIST
-        [SerializeField] Avatar_Controller[] players = new Avatar_Controller[4];
+    [SerializeField] Avatar_Controller[] players = new Avatar_Controller[4];
+
+    [SerializeField] GameObject[] texts = new GameObject[3];
 
     [SerializeField] GameObject leaderBoardCanvas;
 
-    float[,] distances = new float[4,2];
+    Dictionary<string, float> myDict = new Dictionary<string, float>();
 
+
+    
 
     // Start is called before the first frame update
     void Start()
@@ -33,19 +40,28 @@ public class LeaderBoardScript : MonoBehaviour
 
         leaderBoardCanvas.SetActive(true);
 
-        int i = 0;
 
         foreach(Avatar_Controller player in players)
         {
             float distanceToPool = player.DistanceToPool();
 
-            distances[i,0] = distanceToPool;
-            distances[i, 1] = i;
-            i++;
+            myDict.Add(player.gameObject.name, distanceToPool );
+
 
         }
 
 
+        var sortedDict = from entry in myDict orderby entry.Value ascending select entry;
+
+        for(int i = 0; i<3; i++)
+        {
+            texts[i].GetComponentInChildren<Text>().text = sortedDict.Skip(i).First().Key;
+
+
+
+
+
+        }
 
 
     }
