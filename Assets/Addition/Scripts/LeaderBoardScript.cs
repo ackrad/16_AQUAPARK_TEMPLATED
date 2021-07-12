@@ -37,15 +37,35 @@ public class LeaderBoardScript : MonoBehaviour
 
     private void StartLeaderBoard()
     {
+        StartCoroutine(LeaderBoardUpdate());
 
         leaderBoardCanvas.SetActive(true);
 
 
-        foreach(Avatar_Controller player in players)
+
+    }
+
+    private IEnumerator LeaderBoardUpdate()
+    {
+        while (GameController.request().IsGameStarted)
+        {
+
+            UpdateLeaderBoard();
+            yield return new WaitForSeconds(2f);
+
+
+        }
+    }
+
+    private void UpdateLeaderBoard()
+    {
+
+        myDict.Clear();
+        foreach (Avatar_Controller player in players)
         {
             float distanceToPool = player.DistanceToPool();
 
-            myDict.Add(player.gameObject.name, distanceToPool );
+            myDict.Add(player.gameObject.name, distanceToPool);
 
 
         }
@@ -53,7 +73,7 @@ public class LeaderBoardScript : MonoBehaviour
 
         var sortedDict = from entry in myDict orderby entry.Value ascending select entry;
 
-        for(int i = 0; i<3; i++)
+        for (int i = 0; i < 3; i++)
         {
             texts[i].GetComponentInChildren<Text>().text = sortedDict.Skip(i).First().Key;
 
@@ -64,8 +84,8 @@ public class LeaderBoardScript : MonoBehaviour
         }
 
 
-    }
 
+    }
 
     private void StopLeaderBoard()
     {
