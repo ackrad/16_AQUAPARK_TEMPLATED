@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using UnityEngine.UI;
+using DG.Tweening;
 
 
 public class LeaderBoardScript : MonoBehaviour
@@ -17,7 +18,7 @@ public class LeaderBoardScript : MonoBehaviour
 
     [SerializeField] GameObject leaderBoardCanvas;
 
-    Dictionary<string, float> myDict = new Dictionary<string, float>();
+    Dictionary<GameObject, float> myDict = new Dictionary<GameObject, float>();
 
 
     
@@ -29,11 +30,22 @@ public class LeaderBoardScript : MonoBehaviour
         UIController.request().StartSliding.AddListener(StartLeaderBoard);
 
         GameController.request().OnGameLost.AddListener(StopLeaderBoard);
+        GameController.request().OnGameWin.AddListener(StopLeaderBoard);
 
-        
+        // assigning player names to boxes
+
+        int loopvar = 0;
+        foreach (Avatar_Controller player in players)
+        {
+            texts[loopvar].GetComponentInChildren<Text>().text = player.name;
+            loopvar++;
+
+
+        }
+
     }
 
- 
+
 
     private void StartLeaderBoard()
     {
@@ -57,6 +69,9 @@ public class LeaderBoardScript : MonoBehaviour
         }
     }
 
+
+
+
     private void UpdateLeaderBoard()
     {
 
@@ -65,7 +80,7 @@ public class LeaderBoardScript : MonoBehaviour
         {
             float distanceToPool = player.DistanceToPool();
 
-            myDict.Add(player.gameObject.name, distanceToPool);
+            myDict.Add(player.gameObject, distanceToPool);
 
 
         }
@@ -75,7 +90,7 @@ public class LeaderBoardScript : MonoBehaviour
 
         for (int i = 0; i < 3; i++)
         {
-            texts[i].GetComponentInChildren<Text>().text = sortedDict.Skip(i).First().Key;
+            texts[i].GetComponentInChildren<Text>().text = sortedDict.Skip(i).First().Key.name;
 
 
 
