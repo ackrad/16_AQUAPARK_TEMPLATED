@@ -14,14 +14,15 @@ public class LeaderBoardScript : MonoBehaviour
         //  TODO TURN THIS INTO LIST
     [SerializeField] Avatar_Controller[] players = new Avatar_Controller[4];
 
-    [SerializeField] GameObject[] texts = new GameObject[3];
+    [SerializeField] RectTransform[] texts = new RectTransform[4];
 
     [SerializeField] GameObject leaderBoardCanvas;
 
     Dictionary<GameObject, float> myDict = new Dictionary<GameObject, float>();
 
+    Vector3 firstPlaceUIPos = new Vector3(300f, -50f, 0f);
 
-    
+    Vector3 uiLeaderBoardoffset =new Vector3(0f, -25f,0);
 
     // Start is called before the first frame update
     void Start()
@@ -70,7 +71,7 @@ public class LeaderBoardScript : MonoBehaviour
     }
 
 
-
+    
 
     private void UpdateLeaderBoard()
     {
@@ -88,13 +89,29 @@ public class LeaderBoardScript : MonoBehaviour
 
         var sortedDict = from entry in myDict orderby entry.Value ascending select entry;
 
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < 4; i++)
         {
-            texts[i].GetComponentInChildren<Text>().text = sortedDict.Skip(i).First().Key.name;
+            for (int j = 0; j < 4; j++)
+            {
+
+                if(sortedDict.Skip(i).First().Key.name == texts[j].GetComponentInChildren<Text>().text  )
+                {
+
+                    Vector3 movePos = firstPlaceUIPos + i * uiLeaderBoardoffset;
+
+                    
+
+                    texts[j].DOLocalMove(movePos, 1);
+
+                   
+                }
 
 
 
+            }
 
+
+    texts[i].GetComponentInChildren<Text>().text = sortedDict.Skip(i).First().Key.name;
 
         }
 
