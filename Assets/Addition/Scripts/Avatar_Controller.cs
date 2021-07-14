@@ -14,11 +14,12 @@ public class Avatar_Controller : MonoBehaviour
     [SerializeField] float upForce = 10f;
     [SerializeField] float secondsToWait = 0.5f;
     [SerializeField] float maxMoveSpeed = 30f;
-
+    [SerializeField] float maxVelocity = -9f;
     [SerializeField] SplineComputer sp;
     [Header("TODO Bunu dynamic yap")]
     [SerializeField] float maxOfset = 3f;
     [SerializeField] string splineTag = "Spline";
+
     Transform winPosition;
     [SerializeField] AnimatorControllerScript animations;
 
@@ -81,6 +82,16 @@ public class Avatar_Controller : MonoBehaviour
 
     }
 
+    private void FixedUpdate()
+    {
+        if(rb.velocity.y< maxVelocity)
+        {
+
+            rb.AddForce(new Vector3(0f, 10f, 0f));
+
+        }
+
+    }
     // Update is called once per frame
     void Update()
     {        

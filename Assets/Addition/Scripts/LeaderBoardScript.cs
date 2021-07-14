@@ -97,12 +97,10 @@ public class LeaderBoardScript : MonoBehaviour
                 if(sortedDict.Skip(i).First().Key.name == texts[j].GetComponentInChildren<Text>().text  )
                 {
 
-                    Vector3 movePos = firstPlaceUIPos + i * uiLeaderBoardoffset;
+                    Vector3 movePos = (firstPlaceUIPos + i * uiLeaderBoardoffset);
 
-                    
 
-                    texts[j].DOLocalMove(movePos, 1);
-
+                    texts[j].transform.DOMove(movePos, 1);
                    
                 }
 
