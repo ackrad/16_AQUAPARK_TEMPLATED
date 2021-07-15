@@ -87,7 +87,7 @@ public class Avatar_Controller : MonoBehaviour
         if(rb.velocity.y< maxVelocity)
         {
 
-            rb.AddForce(new Vector3(0f, 10f, 0f));
+            rb.AddForce(new Vector3(0f, 9f, 0f));
 
         }
 
@@ -239,6 +239,13 @@ public class Avatar_Controller : MonoBehaviour
         if (spFollower.followSpeed < maxMoveSpeed)
         {
             spFollower.followSpeed += 1f * Time.deltaTime;
+            moveSpeed = spFollower.followSpeed;
+
+        }
+
+        else if (spFollower.followSpeed > maxMoveSpeed)
+        {
+            spFollower.followSpeed -= 1f * Time.deltaTime;
             moveSpeed = spFollower.followSpeed;
 
         }
