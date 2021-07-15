@@ -18,7 +18,11 @@ public class Avatar_Controller : MonoBehaviour
     [SerializeField] SplineComputer sp;
     [Header("TODO Bunu dynamic yap")]
     [SerializeField] float maxOfset = 3f;
-    [SerializeField] string splineTag = "Spline";
+    [SerializeField] float collisionSpeedIncrease = 5f;
+
+
+    private const string splineTag = "Spline";
+
 
     Transform winPosition;
     [SerializeField] AnimatorControllerScript animations;
@@ -254,6 +258,7 @@ public class Avatar_Controller : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        // TODO change tags into const string references
         if (collision.collider.CompareTag(splineTag) )
         {
 
@@ -264,6 +269,14 @@ public class Avatar_Controller : MonoBehaviour
         else if(collision.collider.CompareTag("Respawn"))
         {
             LoseGameEvent();
+
+        }
+
+        else if (collision.collider.CompareTag("Player"))
+        {
+
+            spFollower.followSpeed += collisionSpeedIncrease;
+            moveSpeed = spFollower.followSpeed;
 
         }
     }
