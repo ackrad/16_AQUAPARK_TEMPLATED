@@ -98,9 +98,10 @@ public class Avatar_Controller : MonoBehaviour
     }
     // Update is called once per frame
     void Update()
-    {        
+    {
 
 
+        //Debug.DrawRay(transform.position, transform.forward, Color.red, 0f, true);
 
         if (isPlayerActive)
         {
@@ -274,7 +275,7 @@ public class Avatar_Controller : MonoBehaviour
 
         else if (collision.collider.CompareTag("Player"))
         {
-
+            Debug.Log("xd");
             spFollower.followSpeed += collisionSpeedIncrease;
             moveSpeed = spFollower.followSpeed;
 
@@ -415,18 +416,7 @@ public class Avatar_Controller : MonoBehaviour
         
     }
 
-    private void DisableThisComponent()
-    {
 
-        this.enabled = false;
-
-    }
-
-    private void EnableThisComponent()
-    {
-
-        this.enabled = true;
-    }
 
 
    
