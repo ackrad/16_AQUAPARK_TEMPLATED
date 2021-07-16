@@ -14,7 +14,7 @@ public class Pool_Win : MonoBehaviour
     {
         if (other.CompareTag("Player") && other.GetComponent<Avatar_Controller>().isPlayerActive)
         {
-
+            Debug.Log("xd");
             other.GetComponent<Avatar_Controller>().InvokeWinGameEvent();
         }
     }

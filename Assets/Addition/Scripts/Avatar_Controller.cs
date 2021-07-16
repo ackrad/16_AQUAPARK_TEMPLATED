@@ -77,6 +77,8 @@ public class Avatar_Controller : MonoBehaviour
         coinTimer = 0f;
         animations.Slide();
         UIController.request().StartSliding.AddListener(RestartPosition);
+        gameController.OnGameStarted.AddListener(EnableThisObject);
+        gameController.OnGameRestarted.AddListener(EnableThisObject);
 
 
 
@@ -350,7 +352,7 @@ public class Avatar_Controller : MonoBehaviour
         path[1] = poolPosition.position;
         path[2] = poolPosition.position + new Vector3(0, depthOfPool, 0);
 
-        transform.DOPath(path, animMoveDuration, pathType, pathMode, 10, Color.red).OnComplete(() => {  animations.Victory(); });
+        transform.DOPath(path, animMoveDuration, pathType, pathMode, 10, Color.red).OnComplete(() => { ChangeToWinPositionAI(); animations.Victory(); });
 
 
 
@@ -387,6 +389,13 @@ public class Avatar_Controller : MonoBehaviour
 
     }
 
+    private void ChangeToWinPositionAI()
+    {
+
+        transform.position = winPosition.position;
+        transform.rotation = winPosition.rotation;
+    }
+
     private void ChangeToSlideCamera()
     {
 
@@ -395,7 +404,12 @@ public class Avatar_Controller : MonoBehaviour
 
     }
 
+    private void EnableThisObject()
+    {
+        this.gameObject.SetActive(true);
 
+
+    }
   
 
     
