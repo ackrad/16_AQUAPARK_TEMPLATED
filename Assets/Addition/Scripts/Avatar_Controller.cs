@@ -101,8 +101,6 @@ public class Avatar_Controller : MonoBehaviour
     {
 
 
-        //Debug.DrawRay(transform.position, transform.forward, Color.red, 0f, true);
-
         if (isPlayerActive)
         {
             coinTimer += Time.deltaTime;
@@ -275,9 +273,26 @@ public class Avatar_Controller : MonoBehaviour
 
         else if (collision.collider.CompareTag("Player"))
         {
-            Debug.Log("xd");
-            spFollower.followSpeed += collisionSpeedIncrease;
-            moveSpeed = spFollower.followSpeed;
+
+            Vector3 fwd = transform.TransformDirection(Vector3.forward);
+
+            if (Physics.Raycast(transform.position, fwd, 10))
+            {
+           
+                spFollower.followSpeed -= collisionSpeedIncrease;
+                moveSpeed = spFollower.followSpeed;
+            }
+
+            else
+            {
+                spFollower.followSpeed += collisionSpeedIncrease;
+                moveSpeed = spFollower.followSpeed;
+
+            }
+
+
+
+
 
         }
     }
