@@ -76,7 +76,7 @@ public class Avatar_Controller : MonoBehaviour
         capsuleCollider = GetComponent<CapsuleCollider>();
         coinTimer = 0f;
         animations.Slide();
-        UIController.request().StartSliding.AddListener(RestartPosition);
+        //UIController.request().StartSliding.AddListener(RestartPosition);
         gameController.OnGameStarted.AddListener(EnableThisObject);
         gameController.OnGameRestarted.AddListener(EnableThisObject);
 
@@ -354,6 +354,7 @@ public class Avatar_Controller : MonoBehaviour
 
         transform.DOPath(path, animMoveDuration, pathType, pathMode, 10, Color.red).OnComplete(() => { ChangeToWinPositionAI(); animations.Victory(); });
 
+        this.gameObject.SetActive(false);
 
 
 
@@ -421,7 +422,7 @@ public class Avatar_Controller : MonoBehaviour
 
     }
 
-    private void RestartPosition()
+    public void RestartPosition(float startPos)
     {
 
 
