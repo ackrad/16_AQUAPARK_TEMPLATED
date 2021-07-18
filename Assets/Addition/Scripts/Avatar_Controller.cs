@@ -355,8 +355,7 @@ public class Avatar_Controller : MonoBehaviour
 
         transform.DOPath(path, animMoveDuration, pathType, pathMode, 10, Color.red).OnComplete(() => { ChangeToWinPositionAI(); animations.Victory(); });
 
-        this.gameObject.SetActive(false);
-
+        transform.position = new Vector3(0f, 0f, 0f);
 
 
     }
@@ -372,6 +371,7 @@ public class Avatar_Controller : MonoBehaviour
         isPlayerActive = false;
         GetComponent<AI_Controller>().AIon = false;
 
+        transform.position = new Vector3(0f, 0f, 0f); // todo find a better fix
         //this.gameObject.SetActive(false);
 
     }
