@@ -91,31 +91,35 @@ public class LeaderBoardScript : MonoBehaviour
 
         for (int i = 0; i < 4; i++)
         {
-            for (int j = 0; j < 4; j++)
-            {
+            /* for (int j = 0; j < 4; j++)
+             {
 
-                if(sortedDict.Skip(i).First().Key.name == texts[j].GetComponentInChildren<Text>().text  )
-                {
+                 if(sortedDict.Skip(i).First().Key.name == texts[j].GetComponentInChildren<Text>().text  )
+                 {
 
-                    Vector3 movePos = (firstPlaceUIPos + i * uiLeaderBoardoffset);
-
-
-                    texts[j].transform.DOMove(movePos, 1);
-                   
-                }
+                     Vector3 movePos = (firstPlaceUIPos + i * uiLeaderBoardoffset);
 
 
+                     texts[j].transform.DOMove(movePos, 1);
 
-            }
+                 }
 
 
-    texts[i].GetComponentInChildren<Text>().text = sortedDict.Skip(i).First().Key.name;
+
+             */
+
+            texts[i].GetComponentInChildren<Text>().text = sortedDict.Skip(i).First().Key.name;
+
 
         }
 
 
 
-    }
+        }
+
+
+
+    
 
     private void StopLeaderBoard()
     {

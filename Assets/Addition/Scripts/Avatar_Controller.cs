@@ -344,6 +344,7 @@ public class Avatar_Controller : MonoBehaviour
 
 
         spFollower.follow = false;
+        isPlayerActive = false;
         Vector3[] path = new Vector3[3];
 
 
@@ -368,8 +369,10 @@ public class Avatar_Controller : MonoBehaviour
 
     public void LoseGameAI()
     {
+        isPlayerActive = false;
+        GetComponent<AI_Controller>().AIon = false;
 
-        this.gameObject.SetActive(false);
+        //this.gameObject.SetActive(false);
 
     }
 
@@ -424,7 +427,12 @@ public class Avatar_Controller : MonoBehaviour
 
     public void RestartPosition(float startPos)
     {
+        if (GetComponent<AI_Controller>())
+        {
 
+            GetComponent<AI_Controller>().AIon = true;
+
+        }
 
         SetSplineFollower();
 
@@ -434,7 +442,7 @@ public class Avatar_Controller : MonoBehaviour
         spFollower.follow = true;
         isPlayerActive = true;
         isFollowing = true;
-        spFollower.Restart(0); //restarts following from projected point
+        spFollower.Restart(startPos); //restarts following from projected point
         ChangeToSlideCamera();
 
         animations.Slide();
