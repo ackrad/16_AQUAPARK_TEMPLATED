@@ -9,20 +9,25 @@ using DG.Tweening;
 public class LeaderBoardScript : MonoBehaviour
 {
 
+    [SerializeField] Avatar_General_Controller avatarGeneral;
+    [SerializeField] Transform listContent;
+    [SerializeField] GameObject gameObjectToAddToList;
+    [SerializeField] GameObject playerTextPreFab;
+
+    //  TODO TURN THIS INTO LIST
+    
+    [SerializeField] Avatar_Controller[] players;
 
 
-        //  TODO TURN THIS INTO LIST
-    [SerializeField] Avatar_Controller[] players = new Avatar_Controller[4];
+    //private GameObject[] posGameObjects;
 
-    [SerializeField] RectTransform[] texts = new RectTransform[4];
+    private List<GameObject> posGameObjects = new List<GameObject>();
 
     [SerializeField] GameObject leaderBoardCanvas;
 
     Dictionary<GameObject, float> myDict = new Dictionary<GameObject, float>();
 
-    Vector3 firstPlaceUIPos = new Vector3(300f, -50f, 0f);
 
-    Vector3 uiLeaderBoardoffset =new Vector3(0f, -25f,0);
 
     // Start is called before the first frame update
     void Start()
@@ -48,15 +53,41 @@ public class LeaderBoardScript : MonoBehaviour
 
 
 
+
+
+
+
     private void StartLeaderBoard()
     {
-        StartCoroutine(LeaderBoardUpdate());
+        int leaderboardLength = avatarGeneral.ReturnAvatarCount();
 
-        leaderBoardCanvas.SetActive(true);
+
+        for(int i =0; i < leaderboardLength; i++)
+        {
+
+            var childObject =  Instantiate(gameObjectToAddToList,listContent);
+
+            posGameObjects.Add(childObject);
+
+        }
+
+
+
+
+
+        //StartCoroutine(LeaderBoardUpdate());
+
+       // leaderBoardCanvas.SetActive(true);
 
 
 
     }
+
+
+
+
+
+
 
     private IEnumerator LeaderBoardUpdate()
     {
@@ -91,22 +122,7 @@ public class LeaderBoardScript : MonoBehaviour
 
         for (int i = 0; i < 4; i++)
         {
-            /* for (int j = 0; j < 4; j++)
-             {
-
-                 if(sortedDict.Skip(i).First().Key.name == texts[j].GetComponentInChildren<Text>().text  )
-                 {
-
-                     Vector3 movePos = (firstPlaceUIPos + i * uiLeaderBoardoffset);
-
-
-                     texts[j].transform.DOMove(movePos, 1);
-
-                 }
-
-
-
-             */
+            
 
             texts[i].GetComponentInChildren<Text>().text = sortedDict.Skip(i).First().Key.name;
 

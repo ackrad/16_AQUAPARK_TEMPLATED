@@ -49,4 +49,12 @@ public class Avatar_General_Controller : MonoBehaviour
     }
 
 
+    public int ReturnAvatarCount()
+    {
+
+
+
+        return (allAvatars.Length);
+    }
+
 }
