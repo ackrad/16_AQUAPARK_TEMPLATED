@@ -18,10 +18,9 @@ public class LeaderBoardScript : MonoBehaviour
     
     [SerializeField] Avatar_Controller[] players;
 
-
-    //private GameObject[] posGameObjects;
-
+    private int leaderboardLength;
     private List<GameObject> posGameObjects = new List<GameObject>();
+    private List<GameObject> texts = new List<GameObject>();
 
     [SerializeField] GameObject leaderBoardCanvas;
 
@@ -40,15 +39,8 @@ public class LeaderBoardScript : MonoBehaviour
 
         // assigning player names to boxes
 
-        int loopvar = 0;
-        foreach (Avatar_Controller player in players)
-        {
-            texts[loopvar].GetComponentInChildren<Text>().text = player.name;
-            loopvar++;
-
-
-        }
-
+      
+        
     }
 
 
@@ -59,8 +51,9 @@ public class LeaderBoardScript : MonoBehaviour
 
     private void StartLeaderBoard()
     {
-        int leaderboardLength = avatarGeneral.ReturnAvatarCount();
-
+        leaderboardLength = avatarGeneral.ReturnAvatarCount();
+        posGameObjects.Clear();
+        texts.Clear();
 
         for(int i =0; i < leaderboardLength; i++)
         {
@@ -69,15 +62,22 @@ public class LeaderBoardScript : MonoBehaviour
 
             posGameObjects.Add(childObject);
 
+
+            var childTextObject = Instantiate(playerTextPreFab,this.transform);
+            childTextObject.GetComponentInChildren<Text>().text = players[i].name;
+
+            texts.Add(childTextObject);
+
         }
 
 
 
 
+      
 
-        //StartCoroutine(LeaderBoardUpdate());
+        StartCoroutine(LeaderBoardUpdate());
 
-       // leaderBoardCanvas.SetActive(true);
+         leaderBoardCanvas.SetActive(true);
 
 
 
@@ -120,11 +120,21 @@ public class LeaderBoardScript : MonoBehaviour
 
         var sortedDict = from entry in myDict orderby entry.Value ascending select entry;
 
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < leaderboardLength; i++)
         {
-            
+            for(int j=0; j< leaderboardLength; j++)
+            {
+                if(texts[j].GetComponentInChildren<Text>().text == sortedDict.Skip(i).First().Key.name)
+                {
 
-            texts[i].GetComponentInChildren<Text>().text = sortedDict.Skip(i).First().Key.name;
+                    texts[j].GetComponent<PlayerUITrackerScript>().ChangeFollowTarget(posGameObjects[i].transform);
+
+                }
+
+
+            }
+             
+
 
 
         }
