@@ -81,7 +81,6 @@ public class AI_Controller : MonoBehaviour
 
         int behaviour = UnityEngine.Random.Range(0, 3);
 
-        Debug.Log(behaviour);
 
         if (behaviour == 0)
         {

@@ -63,7 +63,7 @@ public class LeaderBoardScript : MonoBehaviour
             posGameObjects.Add(childObject);
 
 
-            var childTextObject = Instantiate(playerTextPreFab,this.transform);
+            var childTextObject = Instantiate(playerTextPreFab,posGameObjects[i].transform.position,Quaternion.identity, this.transform);
             childTextObject.GetComponentInChildren<Text>().text = players[i].name;
 
             texts.Add(childTextObject);
