@@ -73,11 +73,11 @@ public class LeaderBoardScript : MonoBehaviour
 
 
 
-      
+        leaderBoardCanvas.SetActive(true);
+
 
         StartCoroutine(LeaderBoardUpdate());
 
-         leaderBoardCanvas.SetActive(true);
 
 
 
@@ -149,8 +149,30 @@ public class LeaderBoardScript : MonoBehaviour
 
     private void StopLeaderBoard()
     {
+        DestroyTrackers();
         leaderBoardCanvas.SetActive(false);
 
+
+
+    }
+
+
+
+    private void DestroyTrackers()
+    {
+        foreach(GameObject posGameObject in posGameObjects)
+        {
+
+
+            Destroy(posGameObject);
+        }
+
+        foreach (GameObject text in texts)
+        {
+
+
+            Destroy(text);
+        }
 
 
     }
