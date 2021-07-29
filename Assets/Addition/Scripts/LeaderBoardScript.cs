@@ -66,7 +66,10 @@ public class LeaderBoardScript : MonoBehaviour
             var childTextObject = Instantiate(playerTextPreFab,posGameObjects[i].transform.position,Quaternion.identity, this.transform);
             childTextObject.GetComponentInChildren<Text>().text = players[i].name;
 
+
             texts.Add(childTextObject);
+
+            texts[i].GetComponent<PlayerUITrackerScript>().ChangeFollowTarget(posGameObjects[i].transform);
 
         }
 
