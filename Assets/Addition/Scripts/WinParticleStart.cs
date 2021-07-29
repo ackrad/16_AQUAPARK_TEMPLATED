@@ -13,7 +13,7 @@ public class WinParticleStart : MonoBehaviour
     private void StartParticles()
     {
 
-        GetComponent<ParticleSystem>().Play();
+        GetComponent<ParticleSystem>().Play(); 
 
 
     }
