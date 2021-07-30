@@ -19,7 +19,6 @@ public class Avatar_Controller : MonoBehaviour
     [Header("TODO Bunu dynamic yap")]
     [SerializeField] float maxOfset = 3f;
     [SerializeField] float collisionSpeedIncrease = 5f;
-    [SerializeField] ParticleSystem winParticle;
 
 
     private const string splineTag = "Spline";
@@ -391,7 +390,6 @@ public class Avatar_Controller : MonoBehaviour
 
         cmController.setCameraStatus(CameraStatus.Camera3);
 
-        Instantiate(winParticle, transform.position, Quaternion.identity);
 
 
     }
