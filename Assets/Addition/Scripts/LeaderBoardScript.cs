@@ -44,12 +44,17 @@ public class LeaderBoardScript : MonoBehaviour
     }
 
 
-
-
-
-
-
     private void StartLeaderBoard()
+    {
+
+        StartCoroutine(_StartLeaderBoard());
+
+    }
+
+
+
+
+    private IEnumerator _StartLeaderBoard()
     {
         leaderboardLength = avatarGeneral.ReturnAvatarCount();
         posGameObjects.Clear();
@@ -67,6 +72,8 @@ public class LeaderBoardScript : MonoBehaviour
 
         }
 
+        yield return null;
+        
         for (int i = 0; i < leaderboardLength; i++)
         {
 
